@@ -6,6 +6,10 @@
     "start": "node app.js",
     "dev": "nodemon app.js"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/structafrica/lanterns.git"
+  },
   "author": "Struct Africa (Livingstone and Edel)",
   "license": "ISC",
   "dependencies": {
