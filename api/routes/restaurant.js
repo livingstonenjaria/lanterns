@@ -3,6 +3,7 @@ const router = express.Router();
 const {body} = require('express-validator')
 
 const restaurantController = require('../controllers/restaurantcontroller');
+const menuitemcontroller = require('../controllers/menuitemcontroller');
 
 router.post(
     '/create', 
@@ -22,5 +23,6 @@ router.post(
     ], 
     restaurantController.postRestaurant);
 router.get('', restaurantController.getRestaurants);
+router.get('/menu/:restaurant', menuitemcontroller.getmenuPerRestaurant);
 
 module.exports = router;

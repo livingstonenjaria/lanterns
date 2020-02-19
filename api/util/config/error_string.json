@@ -1,0 +1,8 @@
+{
+    "serverError": "Whoa seems our server experienced an error, please try again.",
+    "menuItemNotFound": "The menu item you are looking for is no longer available.",
+    "emailExists": "Oops seems like that email is already taken.",
+    "invalidRequest": "Oops can't let you in, please provide your login information.",
+    "userNotFound": "Oops can't seem to find any record of you, do you mind trying with a different email or registering.",
+    "passwordsDontMatch": "Oops its seems we cant let you in, wrong password."
+}

@@ -3,6 +3,7 @@ const router = express.Router();
 const {body} = require('express-validator')
 
 const menucategorycontroller = require('../controllers/menucategorycontroller');
+const menuitemcontroller = require('../controllers/menuitemcontroller');
 
 router.post(
   "/create",
@@ -18,5 +19,6 @@ router.post(
   menucategorycontroller.postmenuCategory
 );
 router.get('', menucategorycontroller.getmenuCategories);
+router.get('/category/:category', menuitemcontroller.getmenuPerCategory);
 
 module.exports = router;

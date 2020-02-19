@@ -1,7 +1,7 @@
 const mongoose = require('mongoose')
 const MenuItem = require('../models/menu_item')
 const {validationResult} = require('express-validator')
-const errorString = require('../../util/config/error_string.json')
+const errorString = require('../util/config/error_string.json')
 
 exports.postmenuItems = (req,res,next) =>{
     const errors = validationResult(req);
@@ -45,5 +45,35 @@ exports.getmenuItems = (req, res, next) => {
         }
         return res.status(201).json(menuitems)
 
+    });
+}
+exports.getmenuPerRestaurant= (req, res, next) =>{
+    const query = {
+        restaurant : req.params.restaurant
+    }
+    MenuItem.find(query)
+    .then(menu =>{
+        res.status(201).json(menu);
+    })
+    .catch(err=>{
+        console.log(err);
+        res.status(500).json({
+            message: errorString.serverError
+        })
+    });
+}
+exports.getmenuPerCategory= (req, res, next) =>{
+    const query = {
+        menu_category : req.params.category
+    }
+    MenuItem.find(query)
+    .then(menu =>{
+        res.status(201).json(menu);
+    })
+    .catch(err=>{
+        console.log(err);
+        res.status(500).json({
+            message: errorString.serverError
+        })
     });
 }

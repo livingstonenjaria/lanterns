@@ -1,7 +1,7 @@
 const mongoose = require('mongoose')
 const MenuCategory = require('../models/menu_category')
 const {validationResult} = require('express-validator')
-const errorString = require('../../util/config/error_string.json')
+const errorString = require('../util/config/error_string.json')
 
 exports.postmenuCategory = (req, res ,next) => {
     const errors = validationResult(req);
@@ -33,6 +33,7 @@ exports.getmenuCategories = (req, res, next) => {
     MenuCategory.find().then(menucategories => {
         res.status(201).json(menucategories)
     }).catch(err => {
+        // TODO: Remove logs in production
         console.log(err);
         res.status(500).json({
             message: errorString.serverError

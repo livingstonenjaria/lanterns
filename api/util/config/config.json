@@ -1,0 +1,5 @@
+{
+    "encodeAlg":"RS256",
+    "issuer": "Lanterns Restaurant",
+    "expiresIn":"1d"
+}

@@ -2,7 +2,7 @@ const mongoose = require('mongoose')
 const Restaurant = require('../models/restaurant')
 const {validationResult} = require('express-validator')
 
-const errorString = require('../../util/config/error_string.json')
+const errorString = require('../util/config/error_string.json')
 
 exports.postRestaurant = (req, res, next) => {
     const errors = validationResult(req);
