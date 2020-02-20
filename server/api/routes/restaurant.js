@@ -46,6 +46,7 @@ router.post('/create',
     // ], 
     multer.single("image"), sendUploadToGCS, restaurantController.postRestaurant);
 router.get('', restaurantController.getRestaurants);
+router.get('/:restaurantid', restaurantController.getSingleRestaurant);
 router.get('/menu/:restaurant', menuitemcontroller.getmenuPerRestaurant);
 function sendUploadToGCS(req, res, next) {
     if (!req.file) {

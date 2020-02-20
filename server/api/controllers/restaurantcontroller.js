@@ -54,3 +54,14 @@ exports.getRestaurants=(req, res, next) =>{
         })
     });
 }
+exports.getSingleRestaurant = (req, res, next) => {
+    const requestid = req.params.restaurantid;
+    Restaurant.findById(requestid).then(restaurant => {
+        res.status(201).json(restaurant)
+    }).catch(err => {
+        console.log(err);
+        res.status(500).json({
+            message: errorString.serverError
+        })
+    });
+}
