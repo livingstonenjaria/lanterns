@@ -10,13 +10,17 @@ exports.postmenuItems = (req,res,next) =>{
             message: errors.array()[0].msg
         });
     }
+    let imagePath
+    if (req.file && req.file.cloudStoragePublicUrl) {
+        imagePath = req.file.cloudStoragePublicUrl;
+    }
     const menuItem = new MenuItem({
         _id: new mongoose.Types.ObjectId(),
         menu_category: req.body.menu_category,
         restaurant: req.body.restaurant,
         name: req.body.name,
         description: req.body.description,
-        imagePath: req.body.imagePath,
+        imagePath: imagePath,
         price: req.body.price,
         featured: req.body.featured,
         popular: req.body.popular,
@@ -28,6 +32,7 @@ exports.postmenuItems = (req,res,next) =>{
             message:"Menu item created successfully"
         })
     }).catch(err=>{
+        console.log(err);
         res.status(500).json({
            message: errorString.serverError 
         })
