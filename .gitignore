@@ -1,2 +1,5 @@
-node_modules
-.env
+/node_modules
+/*.env
+/lanterns-268812-5752374491dc.json
+/private.key
+/public.key

@@ -1,7 +1,7 @@
 const mongoose = require('mongoose')
 const MenuItem = require('../models/menu_item')
 const {validationResult} = require('express-validator')
-const errorString = require('../util/config/error_string.json')
+const errorString = require('../util/config/error_string')
 
 exports.postmenuItems = (req,res,next) =>{
     const errors = validationResult(req);

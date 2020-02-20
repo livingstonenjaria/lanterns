@@ -4,8 +4,7 @@
   const restaurantSchema = new Schema({
     _id: Schema.Types.ObjectId,
     imagePath: {
-        type: String,
-        required: [true,'An image of the restaurant is required']
+        type: String
     },
     name: {
         type: String,
@@ -17,6 +16,10 @@
     phone: {
         type: String,
         required: [true, 'A phone number for the restaurant is required']
+    },  
+    address: {
+        type: String,
+        required: [true, 'An address for the restaurant is required']
     },  
     description: {
         type: String

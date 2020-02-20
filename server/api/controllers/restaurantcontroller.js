@@ -11,13 +11,24 @@ exports.postRestaurant = (req, res, next) => {
             message: errors.array()[0].msg
         });
     }
+    let imagePath
+    if (req.file && req.file.cloudStoragePublicUrl) {
+        imagePath = req.file.cloudStoragePublicUrl;
+    }
+    // if (!req.file) {
+    //     return res.status(422).json({
+    //         message: errorString.imageNotProvided
+    //     });
+    // }
+    
     const restaurant = new Restaurant({
         _id: new mongoose.Types.ObjectId(),
-        imagePath: req.body.imagePath,
+        imagePath: imagePath,
         name: req.body.name,
         cuisines: req.body.cuisines,
         phone: req.body.cuisines,
         description: req.body.description,
+        address: req.body.address,
         date_created: Date.now()
     });
     restaurant.save()

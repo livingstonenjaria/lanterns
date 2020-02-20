@@ -14,6 +14,7 @@ const authRoute = require('./api/routes/auth');
 const restaurantRoute = require('./api/routes/restaurant');
 const menuCategoryRoute = require('./api/routes/menu_category');
 const menuItemRoute = require('./api/routes/menu_item');
+const orderItemRoute = require('./api/routes/order');
 
 const app = express();
 const port = process.env.PORT || 3000;
@@ -27,7 +28,7 @@ app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', '.hbs');
 app.use(logger('dev'));
 app.use(bodyParser.urlencoded({
-  extended: false
+  extended: true
 }));
 app.use(bodyParser.json());
 app.use(cookieParser());
@@ -38,6 +39,7 @@ app.use('/api/v1/user', authRoute);
 app.use('/api/v1/restaurants', restaurantRoute);
 app.use('/api/v1/menu_category', menuCategoryRoute);
 app.use('/api/v1/menu_item', menuItemRoute);
+app.use('/api/v1/order', orderItemRoute);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -55,7 +57,7 @@ app.use(function(err, req, res, next) {
   res.render('error');
 });
 
-mongoose.connect(process.env.MONGO_URI,{
+mongoose.connect(process.env.MONGO_URI, {
   useCreateIndex:true,
   useNewUrlParser:true,
   useFindAndModify:false,
