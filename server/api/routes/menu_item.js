@@ -38,6 +38,7 @@ router.post(
     // ], 
     multer.single("image"), sendUploadToGCS, menuitemcontroller.postmenuItems);
 router.get('', menuitemcontroller.getmenuItems);
+router.get('/:menuId', menuitemcontroller.getSinglemenuItem);
 
 function sendUploadToGCS(req, res, next) {
     if (!req.file) {

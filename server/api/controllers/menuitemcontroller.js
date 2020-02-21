@@ -52,6 +52,21 @@ exports.getmenuItems = (req, res, next) => {
 
     });
 }
+exports.getSinglemenuItem = (req, res, next) => {
+    const menuId = req.params.menuId;
+    MenuItem.findById(menuId).
+    populate('menu_category', 'name').
+    exec((err, menuitems) => {
+        if (err){
+            console.log(err);
+            return res.status(404).json({
+                message: errorString.menuItemNotFound
+            })
+        }
+        return res.status(201).json(menuitems)
+
+    });
+}
 exports.getmenuPerRestaurant= (req, res, next) =>{
     const query = {
         restaurant : req.params.restaurant
