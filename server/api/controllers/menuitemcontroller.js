@@ -57,6 +57,7 @@ exports.getmenuPerRestaurant= (req, res, next) =>{
         restaurant : req.params.restaurant
     }
     MenuItem.find(query)
+    populate('menu_category', 'name')
     .then(menu =>{
         res.status(201).json(menu);
     })

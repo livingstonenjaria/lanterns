@@ -26,7 +26,7 @@ exports.postRestaurant = (req, res, next) => {
         imagePath: imagePath,
         name: req.body.name,
         cuisines: req.body.cuisines,
-        phone: req.body.cuisines,
+        phone: req.body.phone,
         description: req.body.description,
         address: req.body.address,
         date_created: Date.now()
