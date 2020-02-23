@@ -69,8 +69,7 @@ exports.getSinglemenuItem = (req, res, next) => {
 }
 exports.getmenuPerRestaurant= (req, res, next) =>{
     const query = {
-        restaurant : req.params.restaurant,
-        menu_category: req.params.menu_category
+        restaurant : req.params.restaurant
     }
     MenuItem.find(query)
     .populate('menu_category', 'name')
